@@ -20,6 +20,8 @@ public class AppUser extends User {
     private String email;
 
     private String password;
+    @Enumerated(EnumType.STRING)
+    private Provider provider;
 
     @OneToMany(targetEntity = Meta.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "appUser")
     private List<Meta> meta = new ArrayList<>();
@@ -74,6 +76,14 @@ public class AppUser extends User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Provider getProvider() {
+        return provider;
+    }
+
+    public void setProvider(Provider provider) {
+        this.provider = provider;
     }
 
     public List<Meta> getMeta() {
